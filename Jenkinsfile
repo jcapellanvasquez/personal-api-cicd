@@ -5,7 +5,7 @@ pipeline {
         stage('docker build') {
             steps {
                 script {
-                    sh "echo ${BUILD_ID}"
+                    sh "docker build -t jcapellan/personal-api-cicd:0.0.1-${BUILD_ID} ."
                 }
             }
         }
