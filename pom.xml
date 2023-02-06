@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>personal-api-cicd</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>personal-api-cicd</name>
     <description>personal-api-cicd</description>
     <properties>
