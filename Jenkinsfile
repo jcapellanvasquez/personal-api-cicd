@@ -19,8 +19,10 @@ pipeline {
             }
         }
         stage('docker push') {
-            steps {
-                sh "docker push jcapellan/personal-api-cicd:0.0.1-${BUILD_ID}"
+            step {
+                script {
+                    sh "docker push jcapellan/personal-api-cicd:0.0.1-${BUILD_ID}"
+                }
             }
         }
     }
