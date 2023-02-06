@@ -12,14 +12,14 @@ pipeline {
             }
         }
         stage('login dockerhub') {
-            step {
+            steps {
                 script {
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 }
             }
         }
         stage('docker push') {
-            step {
+            steps {
                 script {
                     sh "docker push jcapellan/personal-api-cicd:0.0.1-${BUILD_ID}"
                 }
