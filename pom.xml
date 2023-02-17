@@ -8,7 +8,7 @@
         <version>2.7.9-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
+    <groupId>com.jcapellan.cicdapp</groupId>
     <artifactId>personal-api-cicd</artifactId>
     <version>0.0.1</version>
     <name>personal-api-cicd</name>

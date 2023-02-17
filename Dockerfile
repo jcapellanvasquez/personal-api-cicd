@@ -23,4 +23,4 @@ COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 COPY --from=build /build/app/target/*.jar /usr/share/app.jar
 
-ENTRYPOINT ["java","-cp","app:app/lib/*","com.example.personalapicicd.PersonalApiCicdApplication"]
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.cicdapp.personalapicicd.PersonalApiCicdApplication"]

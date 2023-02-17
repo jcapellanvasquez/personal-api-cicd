@@ -1,4 +1,4 @@
-package com.example.personalapicicd;
+package com.cicdapp.personalapicicd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
