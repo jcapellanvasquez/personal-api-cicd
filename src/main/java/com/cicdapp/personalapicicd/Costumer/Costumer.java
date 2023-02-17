@@ -3,10 +3,10 @@ package com.cicdapp.personalapicicd.Costumer;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "costumer")
 public class Costumer {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "costumer_gen")
-    @SequenceGenerator(name = "costumer_gen", sequenceName = "costumer_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String firstName;
