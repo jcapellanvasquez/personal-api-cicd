@@ -1,10 +1,10 @@
-package com.cicdapp.personalapicicd.Costumer;
+package com.cicdapp.personalapicicd.customer;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "costumer")
-public class Costumer {
+@Table(name = "customer")
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
