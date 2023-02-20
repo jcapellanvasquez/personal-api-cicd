@@ -11,23 +11,34 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
 public class CostumerServiceTest {
     @Mock
-    private CustomerRepository costumerRepository;
+    private CustomerRepository customerRepository;
 
     @InjectMocks
-    private CustomerService costumerService;
+    private CustomerService customerService;
 
     @Test
     public void testFindAll() {
-        Mockito.when(this.costumerRepository.findAll())
+        Mockito.when(this.customerRepository.findAll())
                .thenReturn(costumers());
-        List<Customer> costumers = this.costumerService.getAllCostumer();
+        List<Customer> costumers = this.customerService.getAllCostumer();
         Assertions.assertNotNull(costumers);
         Assertions.assertEquals(1, costumers.size());
+    }
+
+    @Test
+    public void testGetCostumer() {
+        final Long TEST_ID = 1L;
+        Mockito.when(this.customerRepository.findById(TEST_ID))
+                .thenReturn(Optional.of(costumer()));
+        Customer customer = this.customerService.getCostumer(TEST_ID);
+        Assertions.assertNotNull(costumers());
+        Assertions.assertEquals(TEST_ID, customer.getId());
     }
 
     private List<Customer> costumers() {

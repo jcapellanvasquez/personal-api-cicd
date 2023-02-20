@@ -2,6 +2,7 @@ package com.cicdapp.personalapicicd.customer;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +20,10 @@ public class CustomerController {
     @GetMapping("")
     public ResponseEntity<List<Customer>> all() {
         return ResponseEntity.ok(this.costumerService.getAllCostumer());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Customer> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(this.costumerService.getCostumer(id));
     }
 }
