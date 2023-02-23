@@ -1,5 +1,6 @@
 package com.cicdapp.personalapicicd.customer;
 
+import com.cicdapp.personalapicicd.CustomerDTO;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -36,7 +37,7 @@ public class CostumerServiceTest {
         final Long TEST_ID = 1L;
         Mockito.when(this.customerRepository.findById(TEST_ID))
                 .thenReturn(Optional.of(costumer()));
-        Customer customer = this.customerService.getCostumer(TEST_ID);
+        CustomerDTO customer = this.customerService.getCostumerById(TEST_ID);
         Assertions.assertNotNull(costumers());
         Assertions.assertEquals(TEST_ID, customer.getId());
     }
