@@ -12,5 +12,13 @@ pipeline {
                 }
             }
         }
+        stage('for the PR') {
+            when {
+                branch 'PR-*'
+            }
+            steps {
+                echo 'trigger on PR's
+            }
+        }
     }
 }
