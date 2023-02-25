@@ -1,6 +1,5 @@
 package com.cicdapp.personalapicicd.customer;
 
-import com.cicdapp.personalapicicd.CustomerDTO;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +23,7 @@ public class CostumerServiceTest {
     private CustomerService customerService;
 
     @Test
-    public void testFindAll() {
+    public void testGetAllCostumer() {
         Mockito.when(this.customerRepository.findAll())
                .thenReturn(costumers());
         List<Customer> costumers = this.customerService.getAllCostumer();
@@ -33,7 +32,7 @@ public class CostumerServiceTest {
     }
 
     @Test
-    public void testGetCostumer() {
+    public void testGetCostumerById() {
         final Long TEST_ID = 1L;
         Mockito.when(this.customerRepository.findById(TEST_ID))
                 .thenReturn(Optional.of(costumer()));

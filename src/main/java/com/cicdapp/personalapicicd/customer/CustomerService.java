@@ -1,6 +1,5 @@
 package com.cicdapp.personalapicicd.customer;
 
-import com.cicdapp.personalapicicd.CustomerDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

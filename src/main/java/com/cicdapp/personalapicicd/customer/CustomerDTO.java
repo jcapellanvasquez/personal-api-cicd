@@ -1,6 +1,5 @@
-package com.cicdapp.personalapicicd;
+package com.cicdapp.personalapicicd.customer;
 
-import com.cicdapp.personalapicicd.customer.Customer;
 import lombok.Data;
 
 @Data
