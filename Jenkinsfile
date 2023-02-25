@@ -17,7 +17,7 @@ pipeline {
                 branch 'PR-*'
             }
             steps {
-                echo 'trigger on PR's
+                echo 'trigger on PR'
             }
         }
     }
