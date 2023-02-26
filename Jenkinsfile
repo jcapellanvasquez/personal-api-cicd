@@ -36,7 +36,8 @@ pipeline {
                 aggregatingResults: true,
                 tools: [
                     java(), checkStyle(pattern: '**/checkstyle-result.xml', reportEncoding: 'UTF-8'),
-                    java(), pmdParser(pattern: '**/pmd.xml', reportEncoding: 'UTF-8')
+                    java(), pmdParser(pattern: '**/pmd.xml', reportEncoding: 'UTF-8'),
+                    java(), spotBugs(pattern: '**/spotbugsXml.xml', reportEncoding: 'UTF-8'),
                 ]
             )
         }
