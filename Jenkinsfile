@@ -34,7 +34,7 @@ pipeline {
             recordIssues(
                 enabledForFailure: true,
                 aggregatingResults: true,
-                tools: [java(), checkstyle(pattern: '**/target/**/main.xml', reportEncoding: 'UTF-8')]
+                tools: [java(), checkStyle(pattern: '**/checkstyle-result.xml', reportEncoding: 'UTF-8')]
             )
         }
     }
