@@ -22,7 +22,11 @@ pipeline {
             }
             steps {
                 sshagent(credentials: ['app-credentials']) {
-                    sh "ssh ${user}@${host} 'kill -9 \$(lsof -t -i:8080) 2>/dev/null'"
+                    try {
+                        sh "ssh ${user}@${host} 'kill -9 \$(lsof -t -i:8080) 2>/dev/null'"
+                    } catch(e) {
+                        println "kill remote process : ${e}"
+                    }
                     sh "scp target/${app} ${user}@${host}:/home/jenkins/${app}"
                     sh "ssh ${user}@${host} 'java -jar ${app} > ${app}.log 2>&1 &'"
                 }
