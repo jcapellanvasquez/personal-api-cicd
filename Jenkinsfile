@@ -17,7 +17,7 @@ pipeline {
             }
             steps {
                 sshagent(credentials: ['app-credentials']) {
-                    sh "ssh ${user}@${host} \'ps | grep ${app} | awk \'{print \$1}\' | xargs kill -9 || true\'"
+                    sh 'ssh ${user}@${host} "ps | grep ${app} | awk \'{print \$1}\' | xargs kill -9 || true"'
                     sh "scp target/${app} ${user}@${host}:/home/jenkins/${app}"
                     sh "ssh ${user}@${host} 'java -jar ${app} > ${app}.log 2>&1 &'"
                 }
