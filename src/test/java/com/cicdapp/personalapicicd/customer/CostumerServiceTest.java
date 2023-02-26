@@ -28,7 +28,7 @@ public class CostumerServiceTest {
                .thenReturn(costumers());
         List<Customer> costumers = this.customerService.getAllCostumer();
         Assertions.assertNotNull(costumers);
-        Assertions.assertEquals(5, costumers.size());
+        Assertions.assertEquals(1, costumers.size());
     }
 
     @Test
