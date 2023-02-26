@@ -22,7 +22,9 @@ pipeline {
             }
             steps {
                 sshagent(credentials: ['app-credentials']) {
-                    sh "ssh ${user}@${host} 'pid=\$(lsof -i:8080 -t) && kill -9 \$pid'"
+                    sh """
+                        ssh ${user}@${host} "kill -9 \$(ps -aux | ${app} | awk '{print \$2}')"
+                    """
                     sh "scp target/${app} ${user}@${host}:/home/jenkins/${app}"
                     sh "ssh ${user}@${host} 'java -jar ${app} > ${app}.log 2>&1 &'"
                 }
