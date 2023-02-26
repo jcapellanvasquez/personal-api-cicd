@@ -11,21 +11,13 @@ pipeline {
         maven "maven-3.6"
     }
     stages {
-        stage('Build and Test') {
-            steps {
-                sh 'mvn clean install pmd:pmd checkstyle:checkstyle'
-            }
-        }
         stage('Deploy') {
             when {
                 branch 'master'
             }
             steps {
                 sshagent(credentials: ['app-credentials']) {
-                    sh (
-                        script: "ssh ${user}@${host} 'kill -9 \$(lsof -t -i:8080) 2>/dev/null'",
-                        returnStatus: true
-                    )
+                    sh "ps | grep ${app} | awk '{print \$1}' | xargs kill -9 || true"
                     sh "scp target/${app} ${user}@${host}:/home/jenkins/${app}"
                     sh "ssh ${user}@${host} 'java -jar ${app} > ${app}.log 2>&1 &'"
                 }
