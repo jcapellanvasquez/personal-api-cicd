@@ -9,21 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/costumer")
+@RequestMapping("/customer")
 public class CustomerController {
     private final CustomerService costumerService;
-
     public CustomerController(CustomerService costumerService) {
         this.costumerService = costumerService;
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Customer>> all() {
+    public ResponseEntity<List<Customer>> listAllCustomers() {
         return ResponseEntity.ok(this.costumerService.getAllCostumer());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(this.costumerService.getCostumer(id));
+    public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id) {
+        return ResponseEntity.ok(this.costumerService.getCostumerById(id));
     }
 }

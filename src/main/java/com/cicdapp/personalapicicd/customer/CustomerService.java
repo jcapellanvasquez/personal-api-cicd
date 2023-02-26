@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Set;
 
 @Service
 public class CustomerService {
@@ -17,7 +16,9 @@ public class CustomerService {
     public List<Customer> getAllCostumer() {
         return this.costumerRepository.findAll();
     }
-    public Customer getCostumer(Long id) throws NoSuchElementException {
-        return this.costumerRepository.findById(id).get();
+    public CustomerDTO getCostumerById(Long id) throws NoSuchElementException {
+        return this.costumerRepository.findById(id)
+                .map(CustomerDTO::convertCostumerToDTO)
+                .orElseThrow(() -> new NoSuchElementException("Costumer: " + id + " not found"));
     }
 }

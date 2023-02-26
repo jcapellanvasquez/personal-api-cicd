@@ -23,7 +23,7 @@ public class CostumerServiceTest {
     private CustomerService customerService;
 
     @Test
-    public void testFindAll() {
+    public void testGetAllCostumer() {
         Mockito.when(this.customerRepository.findAll())
                .thenReturn(costumers());
         List<Customer> costumers = this.customerService.getAllCostumer();
@@ -32,11 +32,11 @@ public class CostumerServiceTest {
     }
 
     @Test
-    public void testGetCostumer() {
+    public void testGetCostumerById() {
         final Long TEST_ID = 1L;
         Mockito.when(this.customerRepository.findById(TEST_ID))
                 .thenReturn(Optional.of(costumer()));
-        Customer customer = this.customerService.getCostumer(TEST_ID);
+        CustomerDTO customer = this.customerService.getCostumerById(TEST_ID);
         Assertions.assertNotNull(costumers());
         Assertions.assertEquals(TEST_ID, customer.getId());
     }
