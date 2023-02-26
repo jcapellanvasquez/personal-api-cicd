@@ -11,17 +11,21 @@ pipeline {
         maven "maven-3.6"
     }
     stages {
-        stage('Build') {
+        stage('Build and Test') {
             steps {
                 sh 'mvn clean install pmd:pmd checkstyle:checkstyle'
             }
         }
-        stage('for the PR') {
+        stage('Deploy') {
             when {
-                branch 'PR-*'
+                branch 'master'
             }
             steps {
-                echo 'trigger on PR'
+                sshagent(credentials: ['app-credentials']) {
+                    sh "ssh ${user}@${host} 'pid=\$(lsof -i:8080 -t) && kill -9 \$pid'"
+                    sh "scp target/${app} ${user}@${host}:/home/jenkins/${app}"
+                    sh "ssh ${user}@${host} 'java -jar ${app} > ${app}.log 2>&1 &'"
+                }
             }
         }
     }
