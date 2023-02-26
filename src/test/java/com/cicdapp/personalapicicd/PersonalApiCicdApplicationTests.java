@@ -9,10 +9,4 @@ class PersonalApiCicdApplicationTests {
     @Test
     void contextLoads() {
     }
-
-    @Test
-    void dummyTest() {
-        Assertions.assertTrue(false);
-    }
-
 }

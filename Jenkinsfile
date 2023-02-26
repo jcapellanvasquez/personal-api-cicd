@@ -13,12 +13,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install -DskipTests'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
+                sh 'mvn clean install'
             }
         }
         stage('for the PR') {
@@ -34,7 +29,7 @@ pipeline {
         always {
             junit(
                 allowEmptyResults: true,
-                testResults: '**/target/surefire-fire-reports/*.xml'
+                testResults: '**/target/surefire-reports/*.xml'
             )
         }
     }
