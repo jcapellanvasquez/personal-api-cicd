@@ -13,7 +13,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install pmd:pmd checkstyle:checkstyle'
+                sh 'mvn clean install -DskipTests'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
             }
         }
         stage('for the PR') {
