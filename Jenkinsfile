@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn clean install pmd:pmd checkstyle:checkstyle'
             }
         }
         stage('for the PR') {
@@ -30,6 +30,11 @@ pipeline {
             junit(
                 allowEmptyResults: true,
                 testResults: '**/target/surefire-reports/*.xml'
+            )
+            recordIssues(
+                enabledForFailure: true,
+                aggregatingResults: true,
+                tools: [java(), checkstyle(pattern: '**/target/**/main.xml', reportEncoding: 'UTF-8')]
             )
         }
     }
