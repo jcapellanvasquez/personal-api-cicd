@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
                 sshagent(credentials: ['app-credentials']) {
-                    ssh "${user}@${host} 'kill -9 \$(pgrep -f ${app})'"
+                    ssh "ssh ${user}@${host} 'kill -9 \$(pgrep -f ${app})'"
                     sh "scp target/${app} ${user}@${host}:/home/jenkins/${app}"
                     sh "ssh ${user}@${host} 'java -jar ${app} > ${app}.log 2>&1 &'"
                 }
