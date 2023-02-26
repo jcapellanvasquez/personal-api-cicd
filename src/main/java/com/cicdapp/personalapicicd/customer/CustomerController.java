@@ -25,4 +25,8 @@ public class CustomerController {
     public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id) {
         return ResponseEntity.ok(this.costumerService.getCostumerById(id));
     }
+    @GetMapping("/check")
+    public ResponseEntity<String> test() {
+        return ResponseEntity.ok("Deployed");
+    }
 }
