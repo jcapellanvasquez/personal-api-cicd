@@ -11,6 +11,11 @@ pipeline {
         maven "maven-3.6"
     }
     stages {
+        stage('Build and Test') {
+            steps {
+                sh 'mvn clean install pmd:pmd checkstyle:checkstyle'
+            }
+         }
         stage('Deploy') {
             when {
                 branch 'master'
